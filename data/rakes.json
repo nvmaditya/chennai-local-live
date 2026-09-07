@@ -1,0 +1,366 @@
+[
+  {
+    "id": "emu-12",
+    "name": "12-car non-AC EMU",
+    "isAC": false,
+    "carCount": 12,
+    "rakeLengthMeters": 276,
+    "cars": [
+      {
+        "index": 1,
+        "type": "DMC",
+        "class": "GEN",
+        "doorCountPerSide": 3,
+        "seated": 78,
+        "standing": 260
+      },
+      {
+        "index": 2,
+        "type": "TC",
+        "class": "FC_LADIES_COMPOSITE",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 240
+      },
+      {
+        "index": 3,
+        "type": "MC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 300
+      },
+      {
+        "index": 4,
+        "type": "TC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 300
+      },
+      {
+        "index": 5,
+        "type": "TC",
+        "class": "LADIES",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 260
+      },
+      {
+        "index": 6,
+        "type": "TC",
+        "class": "FC_LADIES_COMPOSITE",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 240
+      },
+      {
+        "index": 7,
+        "type": "NDMC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 300
+      },
+      {
+        "index": 8,
+        "type": "TC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 300
+      },
+      {
+        "index": 9,
+        "type": "TC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 300
+      },
+      {
+        "index": 10,
+        "type": "MC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 300
+      },
+      {
+        "index": 11,
+        "type": "TC",
+        "class": "FC_LADIES_COMPOSITE",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 240
+      },
+      {
+        "index": 12,
+        "type": "DMC",
+        "class": "GEN",
+        "doorCountPerSide": 3,
+        "seated": 78,
+        "standing": 260
+      }
+    ]
+  },
+  {
+    "id": "emu-9",
+    "name": "9-car non-AC EMU",
+    "isAC": false,
+    "carCount": 9,
+    "rakeLengthMeters": 207,
+    "cars": [
+      {
+        "index": 1,
+        "type": "DMC",
+        "class": "GEN",
+        "doorCountPerSide": 3,
+        "seated": 78,
+        "standing": 240
+      },
+      {
+        "index": 2,
+        "type": "TC",
+        "class": "FC_LADIES_COMPOSITE",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 220
+      },
+      {
+        "index": 3,
+        "type": "MC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 280
+      },
+      {
+        "index": 4,
+        "type": "TC",
+        "class": "LADIES",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 240
+      },
+      {
+        "index": 5,
+        "type": "TC",
+        "class": "FC_LADIES_COMPOSITE",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 220
+      },
+      {
+        "index": 6,
+        "type": "MC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 280
+      },
+      {
+        "index": 7,
+        "type": "TC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 280
+      },
+      {
+        "index": 8,
+        "type": "TC",
+        "class": "FC_LADIES_COMPOSITE",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 220
+      },
+      {
+        "index": 9,
+        "type": "DMC",
+        "class": "GEN",
+        "doorCountPerSide": 3,
+        "seated": 78,
+        "standing": 240
+      }
+    ]
+  },
+  {
+    "id": "ac-emu-12",
+    "name": "12-car AC EMU (ICF)",
+    "isAC": true,
+    "carCount": 12,
+    "rakeLengthMeters": 276,
+    "cars": [
+      {
+        "index": 1,
+        "type": "DMC",
+        "class": "AC_GEN",
+        "doorCountPerSide": 3,
+        "seated": 78,
+        "standing": 160
+      },
+      {
+        "index": 2,
+        "type": "TC",
+        "class": "AC_GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 180
+      },
+      {
+        "index": 3,
+        "type": "MC",
+        "class": "AC_GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 180
+      },
+      {
+        "index": 4,
+        "type": "TC",
+        "class": "AC_GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 180
+      },
+      {
+        "index": 5,
+        "type": "NDMC",
+        "class": "AC_LADIES",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 160
+      },
+      {
+        "index": 6,
+        "type": "TC",
+        "class": "AC_LADIES",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 160
+      },
+      {
+        "index": 7,
+        "type": "MC",
+        "class": "AC_GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 180
+      },
+      {
+        "index": 8,
+        "type": "TC",
+        "class": "AC_GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 180
+      },
+      {
+        "index": 9,
+        "type": "TC",
+        "class": "AC_GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 180
+      },
+      {
+        "index": 10,
+        "type": "MC",
+        "class": "AC_GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 180
+      },
+      {
+        "index": 11,
+        "type": "TC",
+        "class": "AC_GEN",
+        "doorCountPerSide": 4,
+        "seated": 96,
+        "standing": 180
+      },
+      {
+        "index": 12,
+        "type": "DMC",
+        "class": "AC_GEN",
+        "doorCountPerSide": 3,
+        "seated": 78,
+        "standing": 160
+      }
+    ]
+  },
+  {
+    "id": "memu-8",
+    "name": "8-car MEMU",
+    "isAC": false,
+    "carCount": 8,
+    "rakeLengthMeters": 184,
+    "cars": [
+      {
+        "index": 1,
+        "type": "DMC",
+        "class": "GEN",
+        "doorCountPerSide": 3,
+        "seated": 72,
+        "standing": 220
+      },
+      {
+        "index": 2,
+        "type": "TC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 90,
+        "standing": 250
+      },
+      {
+        "index": 3,
+        "type": "MC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 90,
+        "standing": 250
+      },
+      {
+        "index": 4,
+        "type": "TC",
+        "class": "LADIES",
+        "doorCountPerSide": 4,
+        "seated": 90,
+        "standing": 230
+      },
+      {
+        "index": 5,
+        "type": "TC",
+        "class": "LADIES",
+        "doorCountPerSide": 4,
+        "seated": 90,
+        "standing": 230
+      },
+      {
+        "index": 6,
+        "type": "MC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 90,
+        "standing": 250
+      },
+      {
+        "index": 7,
+        "type": "TC",
+        "class": "GEN",
+        "doorCountPerSide": 4,
+        "seated": 90,
+        "standing": 250
+      },
+      {
+        "index": 8,
+        "type": "DMC",
+        "class": "GEN",
+        "doorCountPerSide": 3,
+        "seated": 72,
+        "standing": 220
+      }
+    ]
+  }
+]

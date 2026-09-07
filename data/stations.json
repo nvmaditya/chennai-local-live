@@ -1,0 +1,1752 @@
+[
+  {
+    "code": "MSB",
+    "name": "Chennai Beach",
+    "nameTa": "சென்னை கடற்கரை",
+    "lat": 13.0698,
+    "lng": 80.285,
+    "lines": [
+      "south",
+      "west",
+      "north",
+      "mrts"
+    ],
+    "km": {
+      "south": 0,
+      "west": 0,
+      "north": 0,
+      "mrts": 0
+    },
+    "interchange": true,
+    "terminal": true,
+    "cluster": "beach-central",
+    "sx": 1110,
+    "sy": 432
+  },
+  {
+    "code": "MSF",
+    "name": "Chennai Fort",
+    "nameTa": "சென்னை கோட்டை",
+    "lat": 13.0822,
+    "lng": 80.2706,
+    "lines": [
+      "south",
+      "mrts"
+    ],
+    "km": {
+      "south": 1.85,
+      "mrts": 1.7
+    },
+    "interchange": true,
+    "terminal": false,
+    "cluster": "beach-central",
+    "sx": 1074,
+    "sy": 456
+  },
+  {
+    "code": "MPK",
+    "name": "Chennai Park",
+    "nameTa": "சென்னை பூங்கா",
+    "lat": 13.081,
+    "lng": 80.2754,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 3.07
+    },
+    "interchange": true,
+    "terminal": false,
+    "cluster": "beach-central",
+    "sx": 1034,
+    "sy": 478
+  },
+  {
+    "code": "MS",
+    "name": "Chennai Egmore",
+    "nameTa": "சென்னை எழும்பூர்",
+    "lat": 13.078,
+    "lng": 80.261,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 4.32
+    },
+    "interchange": true,
+    "terminal": false,
+    "metroInterchange": true,
+    "cluster": "beach-central",
+    "sx": 1008,
+    "sy": 508
+  },
+  {
+    "code": "MSC",
+    "name": "Chetpet",
+    "nameTa": "செட்பெட்",
+    "lat": 13.0715,
+    "lng": 80.2425,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 6.56
+    },
+    "interchange": false,
+    "terminal": false,
+    "metroInterchange": true,
+    "sx": 972,
+    "sy": 528
+  },
+  {
+    "code": "NBK",
+    "name": "Nungambakkam",
+    "nameTa": "நுங்கம்பாக்கம்",
+    "lat": 13.064,
+    "lng": 80.233,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 8.15
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 968.9,
+    "sy": 521
+  },
+  {
+    "code": "MKK",
+    "name": "Kodambakkam",
+    "nameTa": "கோடம்பாக்கம்",
+    "lat": 13.052,
+    "lng": 80.221,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 9.68
+    },
+    "interchange": false,
+    "terminal": false,
+    "metroInterchange": true,
+    "sx": 951.7,
+    "sy": 530.2
+  },
+  {
+    "code": "MBM",
+    "name": "Mambalam",
+    "nameTa": "மாம்பலம்",
+    "lat": 13.0385,
+    "lng": 80.2215,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 11.29
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 933.6,
+    "sy": 539.9
+  },
+  {
+    "code": "SP",
+    "name": "Saidapet",
+    "nameTa": "சைதாப்பேட்டை",
+    "lat": 13.021,
+    "lng": 80.2205,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 12.9
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 915.5,
+    "sy": 549.6
+  },
+  {
+    "code": "GDY",
+    "name": "Guindy",
+    "nameTa": "கிண்டி",
+    "lat": 13.008,
+    "lng": 80.213,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 15.01
+    },
+    "interchange": true,
+    "terminal": false,
+    "metroInterchange": true,
+    "sx": 891.7,
+    "sy": 562.3
+  },
+  {
+    "code": "STM",
+    "name": "St. Thomas Mount",
+    "nameTa": "பரங்கிமலை",
+    "lat": 13.005,
+    "lng": 80.1965,
+    "lines": [
+      "south",
+      "mrts"
+    ],
+    "km": {
+      "south": 17.12,
+      "mrts": 23.2
+    },
+    "interchange": true,
+    "terminal": false,
+    "metroInterchange": true,
+    "sx": 868,
+    "sy": 575
+  },
+  {
+    "code": "PZA",
+    "name": "Pazhavanthangal",
+    "nameTa": "பழவந்தாங்கல்",
+    "lat": 12.989,
+    "lng": 80.188,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 18.75
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 850.9,
+    "sy": 585.8
+  },
+  {
+    "code": "MN",
+    "name": "Meenambakkam",
+    "nameTa": "மீனம்பாக்கம்",
+    "lat": 12.9875,
+    "lng": 80.1755,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 20.04
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 837.4,
+    "sy": 594.4
+  },
+  {
+    "code": "TLM",
+    "name": "Tirusulam",
+    "nameTa": "திருசூலம்",
+    "lat": 12.973,
+    "lng": 80.164,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 21.22
+    },
+    "interchange": false,
+    "terminal": false,
+    "metroInterchange": true,
+    "sx": 825,
+    "sy": 602.3
+  },
+  {
+    "code": "PV",
+    "name": "Pallavaram",
+    "nameTa": "பல்லாவரம்",
+    "lat": 12.9675,
+    "lng": 80.149,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 23.15
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 804.8,
+    "sy": 615.1
+  },
+  {
+    "code": "CMP",
+    "name": "Chromepet",
+    "nameTa": "குரோம்பேட்டை",
+    "lat": 12.9518,
+    "lng": 80.141,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 25.35
+    },
+    "interchange": false,
+    "terminal": false,
+    "metroInterchange": true,
+    "sx": 781.7,
+    "sy": 629.8
+  },
+  {
+    "code": "TBMS",
+    "name": "Tambaram Sanatorium",
+    "nameTa": "தாம்பரம் சானடோரியம்",
+    "lat": 12.936,
+    "lng": 80.128,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 27.36
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 760.7,
+    "sy": 643.2
+  },
+  {
+    "code": "TBM",
+    "name": "Tambaram",
+    "nameTa": "தாம்பரம்",
+    "lat": 12.9249,
+    "lng": 80.1176,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 29.14
+    },
+    "interchange": true,
+    "terminal": true,
+    "metroInterchange": true,
+    "sx": 742,
+    "sy": 655
+  },
+  {
+    "code": "PRGL",
+    "name": "Perungalathur",
+    "nameTa": "பெருங்களத்தூர்",
+    "lat": 12.9045,
+    "lng": 80.096,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 32.64
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 713,
+    "sy": 675.9
+  },
+  {
+    "code": "VDR",
+    "name": "Vandalur",
+    "nameTa": "வண்டலூர்",
+    "lat": 12.892,
+    "lng": 80.081,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 34.44
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 698.1,
+    "sy": 686.6
+  },
+  {
+    "code": "KLBA",
+    "name": "Kilambakkam",
+    "nameTa": "கிளாம்பாக்கம்",
+    "lat": 12.8745,
+    "lng": 80.0766,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 36.65
+    },
+    "interchange": true,
+    "terminal": false,
+    "aliases": [
+      "KBTM"
+    ],
+    "sx": 679.9,
+    "sy": 699.8
+  },
+  {
+    "code": "UPM",
+    "name": "Urapakkam",
+    "nameTa": "உரப்பாக்கம்",
+    "lat": 12.867,
+    "lng": 80.068,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 37.5
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 672.8,
+    "sy": 704.8
+  },
+  {
+    "code": "GI",
+    "name": "Guduvancheri",
+    "nameTa": "குடுவஞ்சேரி",
+    "lat": 12.845,
+    "lng": 80.057,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 40.41
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 648.8,
+    "sy": 722.2
+  },
+  {
+    "code": "POTI",
+    "name": "Potheri",
+    "nameTa": "போத்தேரி",
+    "lat": 12.825,
+    "lng": 80.045,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 43.94
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 619.6,
+    "sy": 743.2
+  },
+  {
+    "code": "CTM",
+    "name": "Kattankulathur",
+    "nameTa": "காட்டாங்குளத்தூர்",
+    "lat": 12.811,
+    "lng": 80.027,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 45.85
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 603.7,
+    "sy": 754.6
+  },
+  {
+    "code": "MMNK",
+    "name": "Maraimalai Nagar",
+    "nameTa": "மரைமலை நகர்",
+    "lat": 12.801,
+    "lng": 80.022,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 46.96
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 594.6,
+    "sy": 761.2
+  },
+  {
+    "code": "SKL",
+    "name": "Singaperumal Koil",
+    "nameTa": "சிங்கபெருமாள் கோயில்",
+    "lat": 12.761,
+    "lng": 80.004,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 51.48
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 557.2,
+    "sy": 788.2
+  },
+  {
+    "code": "PWU",
+    "name": "Paranur",
+    "nameTa": "பரனூர்",
+    "lat": 12.722,
+    "lng": 79.992,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 55.59
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 523.2,
+    "sy": 812.7
+  },
+  {
+    "code": "CGL",
+    "name": "Chengalpattu",
+    "nameTa": "செங்கல்பட்டு",
+    "lat": 12.6819,
+    "lng": 79.9836,
+    "lines": [
+      "south"
+    ],
+    "km": {
+      "south": 59.84
+    },
+    "interchange": true,
+    "terminal": true,
+    "sx": 488,
+    "sy": 838
+  },
+  {
+    "code": "RPM",
+    "name": "Royapuram",
+    "nameTa": "ராயபுரம்",
+    "lat": 13.104,
+    "lng": 80.2935,
+    "lines": [
+      "west",
+      "north"
+    ],
+    "km": {
+      "west": 4.3,
+      "north": 4.3
+    },
+    "interchange": false,
+    "terminal": false,
+    "cluster": "beach-central",
+    "sx": 1084,
+    "sy": 400
+  },
+  {
+    "code": "WST",
+    "name": "Washermanpet",
+    "nameTa": "வண்ணாரப்பேட்டை",
+    "lat": 13.1088,
+    "lng": 80.2805,
+    "lines": [
+      "west",
+      "north"
+    ],
+    "km": {
+      "west": 6,
+      "north": 6
+    },
+    "interchange": false,
+    "terminal": false,
+    "metroInterchange": true,
+    "cluster": "beach-central",
+    "sx": 1048,
+    "sy": 388
+  },
+  {
+    "code": "MASS",
+    "name": "Chennai Central Suburban",
+    "nameTa": "சென்னை சென்ட்ரல் புறநகர்",
+    "lat": 13.0827,
+    "lng": 80.2747,
+    "lines": [
+      "west",
+      "north"
+    ],
+    "km": {
+      "west": 7.1,
+      "north": 7.1
+    },
+    "interchange": true,
+    "terminal": true,
+    "metroInterchange": true,
+    "cluster": "beach-central",
+    "aliases": [
+      "MMCC"
+    ],
+    "sx": 1006,
+    "sy": 392
+  },
+  {
+    "code": "BBQ",
+    "name": "Basin Bridge",
+    "nameTa": "பேசின் பாலம்",
+    "lat": 13.0985,
+    "lng": 80.271,
+    "lines": [
+      "west",
+      "north"
+    ],
+    "km": {
+      "west": 8.8,
+      "north": 8.8
+    },
+    "interchange": true,
+    "terminal": false,
+    "cluster": "beach-central",
+    "sx": 980,
+    "sy": 348
+  },
+  {
+    "code": "VJM",
+    "name": "Vyasarpadi Jeeva",
+    "nameTa": "வியாசர்பாடி ஜீவா",
+    "lat": 13.116,
+    "lng": 80.257,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 10.2
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 936.9,
+    "sy": 353.4
+  },
+  {
+    "code": "PER",
+    "name": "Perambur",
+    "nameTa": "பெரம்பூர்",
+    "lat": 13.1075,
+    "lng": 80.2445,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 11.4
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 900,
+    "sy": 358
+  },
+  {
+    "code": "PCW",
+    "name": "Perambur Carriage Works",
+    "nameTa": "பெரம்பூர் கேரேஜ் வொர்க்ஸ்",
+    "lat": 13.107,
+    "lng": 80.236,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 12.4
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 882.5,
+    "sy": 357.5
+  },
+  {
+    "code": "PEW",
+    "name": "Perambur Loco Works",
+    "nameTa": "பெரம்பூர் லோகோ வொர்க்ஸ்",
+    "lat": 13.108,
+    "lng": 80.227,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 13.3
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 866.8,
+    "sy": 357.1
+  },
+  {
+    "code": "VLK",
+    "name": "Villivakkam",
+    "nameTa": "வில்லிவாக்கம்",
+    "lat": 13.112,
+    "lng": 80.207,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 15
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 837,
+    "sy": 356.2
+  },
+  {
+    "code": "KOTR",
+    "name": "Korattur",
+    "nameTa": "கோரட்டூர்",
+    "lat": 13.1125,
+    "lng": 80.184,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 16.9
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 803.8,
+    "sy": 355.3
+  },
+  {
+    "code": "PVM",
+    "name": "Pattaravakkam",
+    "nameTa": "பட்டரவாக்கம்",
+    "lat": 13.114,
+    "lng": 80.169,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 18.2
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 781,
+    "sy": 354.6
+  },
+  {
+    "code": "ABU",
+    "name": "Ambattur",
+    "nameTa": "அம்பத்தூர்",
+    "lat": 13.1148,
+    "lng": 80.148,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 19.4
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 760,
+    "sy": 354
+  },
+  {
+    "code": "TMVL",
+    "name": "Thirumullaivoyal",
+    "nameTa": "திருமுல்லைவாயில்",
+    "lat": 13.126,
+    "lng": 80.131,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 21
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 732,
+    "sy": 353.2
+  },
+  {
+    "code": "ANNR",
+    "name": "Annanur",
+    "nameTa": "அண்ணனூர்",
+    "lat": 13.118,
+    "lng": 80.12,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 22.1
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 712.8,
+    "sy": 352.7
+  },
+  {
+    "code": "AVD",
+    "name": "Avadi",
+    "nameTa": "ஆவடி",
+    "lat": 13.1143,
+    "lng": 80.1018,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 23.4
+    },
+    "interchange": true,
+    "terminal": true,
+    "sx": 690,
+    "sy": 352
+  },
+  {
+    "code": "HC",
+    "name": "Hindu College",
+    "nameTa": "இந்து கல்லூரி",
+    "lat": 13.112,
+    "lng": 80.085,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 25.3
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 660.4,
+    "sy": 351.6
+  },
+  {
+    "code": "PAB",
+    "name": "Pattabiram",
+    "nameTa": "பட்டாபிரம்",
+    "lat": 13.118,
+    "lng": 80.06,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 26.8
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 637,
+    "sy": 351.3
+  },
+  {
+    "code": "PTMS",
+    "name": "Pattabiram Military Siding",
+    "nameTa": "பட்டாபிரம் மிலிட்டரி",
+    "lat": 13.122,
+    "lng": 80.05,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 28.1
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 616.7,
+    "sy": 351
+  },
+  {
+    "code": "PRES",
+    "name": "Pattabiram East Depot",
+    "nameTa": "பட்டாபிரம் கிழக்கு டெப்போ",
+    "lat": 13.124,
+    "lng": 80.042,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 29
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 602.7,
+    "sy": 350.8
+  },
+  {
+    "code": "NEC",
+    "name": "Nemilichery",
+    "nameTa": "நெமிலிச்சேரி",
+    "lat": 13.126,
+    "lng": 80.028,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 30.2
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 584,
+    "sy": 350.5
+  },
+  {
+    "code": "TI",
+    "name": "Thiruninravur",
+    "nameTa": "திருநின்றவூர்",
+    "lat": 13.131,
+    "lng": 80.01,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 32
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 555.9,
+    "sy": 350.2
+  },
+  {
+    "code": "VEU",
+    "name": "Veppampattu",
+    "nameTa": "வேப்பம்பட்டு",
+    "lat": 13.133,
+    "lng": 79.988,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 34.1
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 523.2,
+    "sy": 349.7
+  },
+  {
+    "code": "SVR",
+    "name": "Sevvapet Road",
+    "nameTa": "செவ்வாப்பேட்டை ரோடு",
+    "lat": 13.135,
+    "lng": 79.965,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 36.2
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 490.4,
+    "sy": 349.2
+  },
+  {
+    "code": "PTLR",
+    "name": "Putlur",
+    "nameTa": "புதலூர்",
+    "lat": 13.137,
+    "lng": 79.942,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 38.4
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 456.1,
+    "sy": 348.8
+  },
+  {
+    "code": "TRL",
+    "name": "Tiruvallur",
+    "nameTa": "திருவள்ளூர்",
+    "lat": 13.143,
+    "lng": 79.909,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 42
+    },
+    "interchange": true,
+    "terminal": true,
+    "sx": 400,
+    "sy": 348
+  },
+  {
+    "code": "EGT",
+    "name": "Egattur",
+    "nameTa": "ஏகாட்டூர்",
+    "lat": 13.14,
+    "lng": 79.875,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 44.6
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 377.2,
+    "sy": 347
+  },
+  {
+    "code": "KBT",
+    "name": "Kadambattur",
+    "nameTa": "கடம்பத்தூர்",
+    "lat": 13.138,
+    "lng": 79.848,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 47
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 356.2,
+    "sy": 346.1
+  },
+  {
+    "code": "SPAM",
+    "name": "Senjipanambakkam",
+    "nameTa": "செஞ்சியபனம்பாக்கம்",
+    "lat": 13.13,
+    "lng": 79.81,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 50.2
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 328.2,
+    "sy": 344.9
+  },
+  {
+    "code": "MAF",
+    "name": "Manavur",
+    "nameTa": "மானவூர்",
+    "lat": 13.12,
+    "lng": 79.775,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 53.1
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 302.8,
+    "sy": 343.8
+  },
+  {
+    "code": "TO",
+    "name": "Thiruvalangadu",
+    "nameTa": "திருவாலங்காடு",
+    "lat": 13.13,
+    "lng": 79.725,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 56.8
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 270.4,
+    "sy": 342.4
+  },
+  {
+    "code": "MOS",
+    "name": "Mosur",
+    "nameTa": "மோசூர்",
+    "lat": 13.11,
+    "lng": 79.7,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 60.4
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 238.9,
+    "sy": 341.1
+  },
+  {
+    "code": "PLMG",
+    "name": "Puliyamangalam",
+    "nameTa": "புளியமங்கலம்",
+    "lat": 13.095,
+    "lng": 79.685,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 62.5
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 220.5,
+    "sy": 340.3
+  },
+  {
+    "code": "AJJ",
+    "name": "Arakkonam",
+    "nameTa": "அரக்கோணம்",
+    "lat": 13.084,
+    "lng": 79.67,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 68.5
+    },
+    "interchange": true,
+    "terminal": true,
+    "sx": 168,
+    "sy": 338
+  },
+  {
+    "code": "TRT",
+    "name": "Tiruttani",
+    "nameTa": "திருத்தணி",
+    "lat": 13.175,
+    "lng": 79.611,
+    "lines": [
+      "west"
+    ],
+    "km": {
+      "west": 82.9
+    },
+    "interchange": false,
+    "terminal": true,
+    "sx": 42,
+    "sy": 292
+  },
+  {
+    "code": "KOK",
+    "name": "Korukkupet",
+    "nameTa": "கொருக்குப்பேட்டை",
+    "lat": 13.118,
+    "lng": 80.278,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 10
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 975.4,
+    "sy": 326.9
+  },
+  {
+    "code": "TNP",
+    "name": "Tondiarpet",
+    "nameTa": "தண்டையார்பேட்டை",
+    "lat": 13.126,
+    "lng": 80.289,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 11.5
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 969.6,
+    "sy": 300.6
+  },
+  {
+    "code": "VOC",
+    "name": "V.O.C. Nagar",
+    "nameTa": "வி.ஓ.சி. நகர்",
+    "lat": 13.14,
+    "lng": 80.296,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 12.8
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 964.6,
+    "sy": 277.8
+  },
+  {
+    "code": "TVT",
+    "name": "Tiruvottiyur",
+    "nameTa": "திருவொற்றியூர்",
+    "lat": 13.16,
+    "lng": 80.307,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 14.5
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 958,
+    "sy": 248
+  },
+  {
+    "code": "WCN",
+    "name": "Wimco Nagar",
+    "nameTa": "விம்கோ நகர்",
+    "lat": 13.179,
+    "lng": 80.309,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 16.2
+    },
+    "interchange": false,
+    "terminal": false,
+    "metroInterchange": true,
+    "sx": 954.8,
+    "sy": 226.8
+  },
+  {
+    "code": "KAVM",
+    "name": "Kathivakkam",
+    "nameTa": "காத்திவாக்கம்",
+    "lat": 13.192,
+    "lng": 80.318,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 18
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 951.4,
+    "sy": 204.4
+  },
+  {
+    "code": "ENR",
+    "name": "Ennore",
+    "nameTa": "எண்ணூர்",
+    "lat": 13.214,
+    "lng": 80.32,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 19.8
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 948,
+    "sy": 182
+  },
+  {
+    "code": "AIPP",
+    "name": "Athipattu Pudunagar",
+    "nameTa": "அத்திப்பட்டு புதுநகர்",
+    "lat": 13.258,
+    "lng": 80.318,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 22.4
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 946.3,
+    "sy": 172.1
+  },
+  {
+    "code": "AIP",
+    "name": "Athipattu",
+    "nameTa": "அத்திப்பட்டு",
+    "lat": 13.274,
+    "lng": 80.321,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 24.1
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 945.2,
+    "sy": 165.7
+  },
+  {
+    "code": "NPKM",
+    "name": "Nandiambakkam",
+    "nameTa": "நந்தியம்பாக்கம்",
+    "lat": 13.292,
+    "lng": 80.327,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 25.6
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 944.2,
+    "sy": 160
+  },
+  {
+    "code": "MJR",
+    "name": "Minjur",
+    "nameTa": "மிஞ்சூர்",
+    "lat": 13.279,
+    "lng": 80.258,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 27.4
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 943,
+    "sy": 153.2
+  },
+  {
+    "code": "APB",
+    "name": "Anuppambattu",
+    "nameTa": "அனுப்பம்பட்டு",
+    "lat": 13.31,
+    "lng": 80.29,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 30.1
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 941.2,
+    "sy": 142.9
+  },
+  {
+    "code": "PON",
+    "name": "Ponneri",
+    "nameTa": "பொன்னேரி",
+    "lat": 13.338,
+    "lng": 80.195,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 33.6
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 938.9,
+    "sy": 129.6
+  },
+  {
+    "code": "KVP",
+    "name": "Kavaraipettai",
+    "nameTa": "கவரைப்பேட்டை",
+    "lat": 13.37,
+    "lng": 80.21,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 37.2
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 936.6,
+    "sy": 116
+  },
+  {
+    "code": "GPD",
+    "name": "Gummidipoondi",
+    "nameTa": "கும்மிடிப்பூண்டி",
+    "lat": 13.407,
+    "lng": 80.342,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 47.2
+    },
+    "interchange": true,
+    "terminal": true,
+    "sx": 930,
+    "sy": 78
+  },
+  {
+    "code": "ELR",
+    "name": "Elavur",
+    "nameTa": "இலவூர்",
+    "lat": 13.48,
+    "lng": 80.28,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 54
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 927.7,
+    "sy": 67.3
+  },
+  {
+    "code": "AKM",
+    "name": "Arambakkam",
+    "nameTa": "அரம்பாக்கம்",
+    "lat": 13.542,
+    "lng": 80.2,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 62
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 925,
+    "sy": 54.7
+  },
+  {
+    "code": "TADA",
+    "name": "Tada",
+    "nameTa": "தடா",
+    "lat": 13.587,
+    "lng": 80.037,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 70.5
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 922.1,
+    "sy": 41.2
+  },
+  {
+    "code": "SPE",
+    "name": "Sullurupeta",
+    "nameTa": "சுள்ளூருப்பேட்டை",
+    "lat": 13.759,
+    "lng": 80.016,
+    "lines": [
+      "north"
+    ],
+    "km": {
+      "north": 82.7
+    },
+    "interchange": false,
+    "terminal": true,
+    "sx": 918,
+    "sy": 22
+  },
+  {
+    "code": "MPKT",
+    "name": "Chennai Park Town",
+    "nameTa": "சென்னை பூங்கா நகர்",
+    "lat": 13.0795,
+    "lng": 80.2768,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 2.6
+    },
+    "interchange": true,
+    "terminal": false,
+    "cluster": "beach-central",
+    "sx": 1052,
+    "sy": 492
+  },
+  {
+    "code": "MCPT",
+    "name": "Chintadripet",
+    "nameTa": "சிந்தாதிரிப்பேட்டை",
+    "lat": 13.072,
+    "lng": 80.275,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 3.5
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 1084.4,
+    "sy": 493
+  },
+  {
+    "code": "MCPK",
+    "name": "Chepauk",
+    "nameTa": "சேப்பாக்கம்",
+    "lat": 13.0625,
+    "lng": 80.281,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 4.6
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 1129,
+    "sy": 511.3
+  },
+  {
+    "code": "MTCN",
+    "name": "Thiruvallikeni",
+    "nameTa": "திருவல்லிக்கேணி",
+    "lat": 13.058,
+    "lng": 80.2755,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 5.7
+    },
+    "interchange": false,
+    "terminal": false,
+    "aliases": [
+      "Triplicane"
+    ],
+    "sx": 1173.5,
+    "sy": 529.7
+  },
+  {
+    "code": "MLHS",
+    "name": "Light House",
+    "nameTa": "லைட் ஹவுஸ்",
+    "lat": 13.0398,
+    "lng": 80.279,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 6.8
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 1218,
+    "sy": 548
+  },
+  {
+    "code": "MKAK",
+    "name": "Mundakanniamman Koil",
+    "nameTa": "முண்டகண்ணியம்மன் கோயில்",
+    "lat": 13.03,
+    "lng": 80.273,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 8
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 1198.6,
+    "sy": 576.6
+  },
+  {
+    "code": "MTMY",
+    "name": "Thirumayilai",
+    "nameTa": "திருமயிலை",
+    "lat": 13.027,
+    "lng": 80.267,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 8.9
+    },
+    "interchange": false,
+    "terminal": false,
+    "aliases": [
+      "Mylapore"
+    ],
+    "sx": 1184,
+    "sy": 598
+  },
+  {
+    "code": "MNDY",
+    "name": "Mandaveli",
+    "nameTa": "மண்டவெளி",
+    "lat": 13.022,
+    "lng": 80.261,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 10
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 1167,
+    "sy": 615.7
+  },
+  {
+    "code": "GWYR",
+    "name": "Greenways Road",
+    "nameTa": "கிரீன்வேஸ் ரோடு",
+    "lat": 13.015,
+    "lng": 80.251,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 11.2
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 1148.4,
+    "sy": 635.1
+  },
+  {
+    "code": "KTPM",
+    "name": "Kotturpuram",
+    "nameTa": "கோட்டூர்புரம்",
+    "lat": 13.013,
+    "lng": 80.242,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 12.4
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 1129.8,
+    "sy": 654.5
+  },
+  {
+    "code": "KTBR",
+    "name": "Kasturba Nagar",
+    "nameTa": "கஸ்தூர்பா நகர்",
+    "lat": 13.005,
+    "lng": 80.247,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 13.4
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 1114.3,
+    "sy": 670.6
+  },
+  {
+    "code": "INDR",
+    "name": "Indira Nagar",
+    "nameTa": "இந்திரா நகர்",
+    "lat": 12.996,
+    "lng": 80.251,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 14.2
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 1101.9,
+    "sy": 683.5
+  },
+  {
+    "code": "TYMR",
+    "name": "Tiruvanmiyur",
+    "nameTa": "திருவான்மியூர்",
+    "lat": 12.983,
+    "lng": 80.259,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 15.1
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 1088,
+    "sy": 698
+  },
+  {
+    "code": "TRMN",
+    "name": "Taramani",
+    "nameTa": "தரமணி",
+    "lat": 12.978,
+    "lng": 80.24,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 16.6
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 1049.4,
+    "sy": 719.4
+  },
+  {
+    "code": "PRGD",
+    "name": "Perungudi",
+    "nameTa": "பெருங்குடி",
+    "lat": 12.971,
+    "lng": 80.226,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 17.8
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 1018.6,
+    "sy": 736.6
+  },
+  {
+    "code": "VLCY",
+    "name": "Velachery",
+    "nameTa": "வேளச்சேரி",
+    "lat": 12.975,
+    "lng": 80.221,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 19.3
+    },
+    "interchange": true,
+    "terminal": true,
+    "sx": 980,
+    "sy": 758
+  },
+  {
+    "code": "PZV",
+    "name": "Puzhuthivakkam",
+    "nameTa": "புழுதிவாக்கம்",
+    "lat": 12.984,
+    "lng": 80.206,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 20.6
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 942.7,
+    "sy": 697
+  },
+  {
+    "code": "ADBK",
+    "name": "Adambakkam",
+    "nameTa": "ஆதம்பாக்கம்",
+    "lat": 12.991,
+    "lng": 80.201,
+    "lines": [
+      "mrts"
+    ],
+    "km": {
+      "mrts": 21.8
+    },
+    "interchange": false,
+    "terminal": false,
+    "sx": 908.2,
+    "sy": 640.7
+  }
+]

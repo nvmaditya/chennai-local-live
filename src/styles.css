@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", "Noto Sans Tamil", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --color-bg: #07090d;
+  --color-surface: #10141c;
+  --color-elevated: #171d28;
+  --color-panel: #0c1016;
+  --color-fg: #e8edf2;
+  --color-muted: #8b93a0;
+  --color-subtle: #5c6572;
+  --color-border: #242b36;
+  --color-border-strong: #3a4454;
+
+  --color-south: #e4453a;
+  --color-west: #2fbf71;
+  --color-north: #4a90ff;
+  --color-mrts: #e0a21a;
+
+  --color-live: #3dd68c;
+  --color-delay: #e0a21a;
+  --color-danger: #e4453a;
+  --color-ladies: #d46a8c;
+  --color-fc: #c9a227;
+  --color-ac: #5ec8e8;
+
+  --color-heat-0: #1c2a24;
+  --color-heat-1: #2f7d4a;
+  --color-heat-2: #c4a020;
+  --color-heat-3: #d45c2c;
+  --color-heat-4: #c23030;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-panel: 0 12px 40px rgb(0 0 0 / 0.45);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-live);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.board-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}

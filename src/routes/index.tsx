@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { Search } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { AppShell } from "@/components/app-shell";
 import { NetworkMap, TrainList } from "@/components/network-map";
@@ -34,31 +35,78 @@ function Home() {
 
   return (
     <AppShell source={snap?.source}>
-      <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col md:flex-row">
-        <div className="flex min-w-0 flex-1 flex-col">
-          <div className="flex flex-wrap items-center gap-2 border-b border-border px-3 py-2">
-            {LINES.map((l) => {
-              const on = active.includes(l.id);
-              return (
-                <button
-                  key={l.id}
-                  type="button"
-                  onClick={() => toggle(l.id)}
-                  className={cn(
-                    "rounded-full px-3 py-1.5 text-xs font-medium ring-1 transition-colors duration-150",
-                    on ? "text-bg" : "bg-transparent text-muted",
-                  )}
-                  style={on ? { background: l.colour, ["--tw-ring-color" as string]: l.colour } : { ["--tw-ring-color" as string]: l.colour }}
-                >
-                  {l.name}
-                </button>
-              );
-            })}
-            <span className="ml-auto font-mono text-xs tabular text-muted">
-              {trains.length ? `${trains.length} trains` : "100 stations · 4 lines"}
-            </span>
+      <div className="mx-auto flex h-full min-h-0 w-full max-w-[1440px] flex-1 flex-col overflow-hidden md:flex-row">
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col">
+          <div className="flex flex-col gap-2 border-b border-border px-3 py-2 sm:flex-row sm:items-center">
+            <div className="relative min-w-0 flex-1">
+              {searchReady ? (
+                <>
+                  <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-subtle" />
+                  <label className="sr-only" htmlFor="stn-search">
+                    Search stations
+                  </label>
+                  <input
+                    id="stn-search"
+                    value={q}
+                    onChange={(e) => setQ(e.target.value)}
+                    placeholder="Station or code — Tambaram, TBM"
+                    autoComplete="off"
+                    className="h-11 w-full rounded-md border border-border bg-surface pl-10 pr-3 text-sm text-fg outline-none placeholder:text-subtle"
+                  />
+                  {q && hits.length ? (
+                    <ul className="absolute z-20 mt-1 w-full overflow-hidden rounded-md border border-border bg-surface shadow-panel">
+                      {hits.map((s) => (
+                        <li key={s.code}>
+                          <button
+                            type="button"
+                            className="flex w-full items-center justify-between px-3 py-3 text-left text-sm hover:bg-elevated"
+                            onClick={() => {
+                              setQ("");
+                              nav({ to: "/station/$code", params: { code: s.code } });
+                            }}
+                          >
+                            <span>
+                              {s.name} <span className="text-muted">{s.nameTa}</span>
+                            </span>
+                            <span className="font-mono text-xs text-muted">{s.code}</span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </>
+              ) : (
+                <div className="h-11 rounded-md border border-border bg-surface" />
+              )}
+            </div>
+            <div className="flex flex-wrap items-center gap-1.5">
+              {LINES.map((l) => {
+                const on = active.includes(l.id);
+                return (
+                  <button
+                    key={l.id}
+                    type="button"
+                    onClick={() => toggle(l.id)}
+                    className={cn(
+                      "rounded-full px-3 py-2 text-xs font-medium ring-1 transition-colors duration-150",
+                      on ? "text-bg" : "bg-transparent text-muted",
+                    )}
+                    style={
+                      on
+                        ? { background: l.colour, ["--tw-ring-color" as string]: l.colour }
+                        : { ["--tw-ring-color" as string]: l.colour }
+                    }
+                  >
+                    {l.name.replace(" Line", "")}
+                  </button>
+                );
+              })}
+              <span className="ml-1 font-mono text-xs tabular text-muted">
+                {snap ? `${trains.length} trains` : "Loading"}
+              </span>
+            </div>
           </div>
-          <div className="relative min-h-[52dvh] flex-1 bg-panel board-grid">
+          <div className="relative min-h-80 flex-1 bg-panel md:min-h-0">
             <NetworkMap
               trains={trains}
               activeLines={active}
@@ -66,63 +114,29 @@ function Home() {
               onSelectTrain={(t) => setSelected(t)}
               onSelectStation={(code) => nav({ to: "/station/$code", params: { code } })}
             />
-            <div className="absolute left-3 top-3 right-3 max-w-sm">
-              {searchReady ? (
-                <>
-              <label className="sr-only" htmlFor="stn-search">
-                Search stations
-              </label>
-              <input
-                id="stn-search"
-                value={q}
-                onChange={(e) => setQ(e.target.value)}
-                placeholder="Station or code — Tambaram, TBM"
-                autoComplete="off"
-                className="h-11 w-full rounded-md border border-border bg-bg/90 px-3 text-sm text-fg outline-none placeholder:text-subtle"
-              />
-              {q && hits.length ? (
-                <ul className="mt-1 overflow-hidden rounded-md border border-border bg-surface shadow-panel">
-                  {hits.map((s) => (
-                    <li key={s.code}>
-                      <button
-                        type="button"
-                        className="flex w-full items-center justify-between px-3 py-2.5 text-left text-sm hover:bg-elevated"
-                        onClick={() => {
-                          setQ("");
-                          nav({ to: "/station/$code", params: { code: s.code } });
-                        }}
-                      >
-                        <span>
-                          {s.name}{" "}
-                          <span className="text-muted">{s.nameTa}</span>
-                        </span>
-                        <span className="font-mono text-xs text-muted">{s.code}</span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-                </>
-              ) : (
-                <div className="h-11 rounded-md border border-border bg-bg/90" />
-              )}
-            </div>
+            {selectedLive ? (
+              <div className="absolute inset-x-0 bottom-0 z-20 max-h-[min(72dvh,560px)] overflow-hidden rounded-t-xl border-t border-border bg-surface shadow-panel md:inset-x-auto md:bottom-4 md:left-4 md:w-[380px] md:rounded-xl md:border">
+                <TrainPanel train={selectedLive} onClose={() => setSelected(null)} />
+              </div>
+            ) : (
+              <p className="pointer-events-none absolute left-3 top-3 hidden rounded-md bg-bg/70 px-2 py-1 text-xs text-muted md:block">
+                Drag to pan · scroll to zoom · tap a train or station
+              </p>
+            )}
           </div>
         </div>
-        <div className="flex h-[42dvh] w-full shrink-0 flex-col md:h-auto md:w-[380px]">
-          {selectedLive ? (
-            <TrainPanel train={selectedLive} onClose={() => setSelected(null)} />
-          ) : (
-            <div className="flex h-full flex-col border-t border-border md:border-l md:border-t-0">
-              <div className="border-b border-border px-4 py-3 text-xs uppercase tracking-wider text-muted">
-                Running now
-              </div>
-              <div className="min-h-0 flex-1 overflow-y-auto">
-                <TrainList trains={trains} onSelect={setSelected} selected={selected?.trainNumber} />
-              </div>
-            </div>
-          )}
-        </div>
+        <aside className="flex h-[40dvh] w-full shrink-0 flex-col border-t border-border bg-surface md:h-auto md:max-h-none md:w-[360px] md:border-l md:border-t-0">
+          <div className="border-b border-border px-4 py-2.5 text-xs uppercase tracking-wider text-muted">
+            Running now
+          </div>
+          <div className="min-h-0 flex-1 overflow-y-auto">
+            {snap ? (
+              <TrainList trains={trains} onSelect={setSelected} selected={selectedLive?.trainNumber} />
+            ) : (
+              <p className="px-4 py-8 text-sm text-muted">Building the board…</p>
+            )}
+          </div>
+        </aside>
       </div>
     </AppShell>
   );

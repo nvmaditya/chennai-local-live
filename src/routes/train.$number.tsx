@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AppShell } from "@/components/app-shell";
 import { CrowdBars, RakeMap } from "@/components/rake-map";
@@ -63,7 +64,10 @@ function TrainPage() {
   return (
     <AppShell source={train.dataSource}>
       <div className="mx-auto w-full max-w-5xl px-4 py-6">
-        <div className="flex items-center gap-2">
+        <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-fg">
+          <ArrowLeft className="size-4" /> Network
+        </Link>
+        <div className="mt-3 flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full" style={{ background: LINE_COLOUR[train.lineId] }} />
           <p className="text-xs uppercase tracking-wider text-muted">
             {train.lineId} · {train.dataSource === "SCHEDULE_SIM" ? "simulated" : train.dataSource} · {train.carCount}-car

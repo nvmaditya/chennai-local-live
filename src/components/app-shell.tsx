@@ -17,7 +17,6 @@ const NAV: NavItem[] = [
   { to: "/about", label: "About" },
 ];
 
-
 export function AppShell({
   children,
   source,
@@ -43,30 +42,25 @@ export function AppShell({
   const sim = source !== "NTES";
 
   return (
-    <div className="min-h-dvh bg-bg text-fg flex flex-col">
+    <div className="flex h-dvh flex-col overflow-hidden bg-bg text-fg">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:bg-elevated focus:px-3 focus:py-2"
       >
         Skip to map
       </a>
-      <div className="border-b border-border bg-panel px-3 py-1.5 text-center text-xs text-muted md:text-left">
-        Unofficial commuter tool. Platforms and occupancy are estimates. Follow station announcements.
-      </div>
       <header className="sticky top-0 z-30 border-b border-border bg-bg/95 backdrop-blur-sm">
-        <div className="mx-auto flex h-14 max-w-[1400px] items-center gap-3 px-3">
+        <div className="mx-auto flex max-w-[1440px] items-center gap-3 px-3 py-2">
           <Link to="/" className="flex min-w-0 items-center gap-2.5">
             <span className="grid h-8 w-8 place-items-center rounded-sm bg-elevated ring-1 ring-border-strong">
-              <span className="font-mono text-sm font-semibold tracking-tight text-fg">CL</span>
+              <span className="font-mono text-sm font-semibold tracking-tight">CL</span>
             </span>
             <span className="min-w-0">
               <span className="block truncate font-semibold leading-tight tracking-tight">Chennai Local Live</span>
-              <span className="hidden truncate text-[11px] text-muted sm:block">
-                Trains, platforms, rake maps, crowd geometry
-              </span>
+              <span className="hidden truncate text-xs text-muted sm:block">Unofficial · estimates only</span>
             </span>
           </Link>
-          <nav className="ml-4 hidden items-center gap-1 md:flex">
+          <nav className="ml-2 hidden items-center gap-1 md:flex">
             {NAV.map((n) => {
               const active =
                 n.to === "/"
@@ -93,11 +87,11 @@ export function AppShell({
             <div className="hidden items-center gap-2 sm:flex">
               <span
                 className={cn(
-                  "rounded-full px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider",
+                  "rounded-full px-2 py-0.5 font-mono text-xs font-semibold uppercase tracking-wider",
                   sim ? "bg-elevated text-delay ring-1 ring-delay/40" : "bg-elevated text-live ring-1 ring-live/40",
                 )}
               >
-                {sim ? "Simulated" : "Live"}
+                {sim ? "Sim" : "Live"}
               </span>
               <span className="font-mono text-xs tabular text-muted">{day}</span>
               <span className="font-mono text-sm tabular text-live">{clock} IST</span>
@@ -126,13 +120,15 @@ export function AppShell({
               </Link>
             ))}
             <div className="flex items-center justify-between px-3 py-2 text-xs text-muted">
-              <span className="font-mono tabular">{day} · {clock} IST</span>
+              <span className="font-mono tabular">
+                {day} · {clock} IST
+              </span>
               <span>{sim ? "SIMULATED" : "LIVE"}</span>
             </div>
           </nav>
         ) : null}
       </header>
-      <div id="main" className="flex min-h-0 flex-1 flex-col">
+      <div id="main" className="flex min-h-0 flex-1 flex-col overflow-y-auto">
         {children}
       </div>
     </div>

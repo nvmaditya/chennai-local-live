@@ -1,8 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { ArrowLeft } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { AppShell } from "@/components/app-shell";
 import { PlatformDiagram } from "@/components/platform-diagram";
-import { CrowdBars, RakeMap } from "@/components/rake-map";
+import { CrowdBars, MiniHeat, RakeMap } from "@/components/rake-map";
 import { LINE_BY_ID } from "@/data/lines";
 import { rakeOf } from "@/data/rakes";
 import { LINE_COLOUR, prevStations, stationOf } from "@/lib/transit/catalog";
@@ -48,12 +49,14 @@ function StationPage() {
       }),
     [dir, line.origin, lineId, prev, rakeId, snap?.generatedAt, st.code, suburb],
   );
-  const nextTrain = board[0];
 
   return (
     <AppShell source={snap?.source}>
       <div className="mx-auto w-full max-w-6xl px-4 py-6">
-        <p className="text-xs uppercase tracking-wider text-muted">
+        <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-fg">
+          <ArrowLeft className="size-4" /> Network
+        </Link>
+        <p className="mt-3 text-xs uppercase tracking-wider text-muted">
           {st.lines.map((l) => LINE_BY_ID[l].name).join(" · ")}
           {st.metroInterchange ? " · Metro interchange" : ""}
         </p>
@@ -76,30 +79,33 @@ function StationPage() {
           ))}
         </div>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <section>
-            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted">Platform geometry</h2>
-            <PlatformDiagram code={st.code} train={nextTrain} highlightCars={crowd.ladiesCars} />
+        <div className="mt-8 grid gap-8 lg:grid-cols-2">
+          <section className="order-2 lg:order-1">
+            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted">Platforms</h2>
+            <PlatformDiagram code={st.code} train={board[0]} highlightCars={crowd.ladiesCars} />
           </section>
-          <section>
-            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted">Crowd from last station</h2>
-            <div className="mb-3 flex flex-wrap gap-2">
+          <section className="order-1 lg:order-2">
+            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted">Where to stand</h2>
+            <div className="mb-3 grid grid-cols-2 gap-2">
               {(["DOWN", "UP"] as Direction[]).map((d) => (
                 <button
                   key={d}
                   type="button"
                   onClick={() => setDir(d)}
                   className={cn(
-                    "rounded-full px-3 py-1.5 text-xs ring-1 ring-border",
+                    "rounded-md px-3 py-2 text-left text-sm ring-1 ring-border",
                     dir === d ? "bg-fg text-bg" : "text-muted",
                   )}
                 >
-                  {d} · {d === "DOWN" ? LINE_BY_ID[lineId].downLabel : LINE_BY_ID[lineId].upLabel}
+                  <span className="block font-medium">{d === "DOWN" ? "Down" : "Up"}</span>
+                  <span className={cn("block text-xs", dir === d ? "text-bg/70" : "text-subtle")}>
+                    {d === "DOWN" ? LINE_BY_ID[lineId].downLabel.replace("Towards ", "") : LINE_BY_ID[lineId].upLabel.replace("Towards ", "")}
+                  </span>
                 </button>
               ))}
             </div>
             <label className="mb-3 block text-xs text-muted">
-              Previous station
+              Came from
               <select
                 className="mt-1 h-11 w-full rounded-md border border-border bg-bg px-3 text-sm text-fg"
                 value={prev}
@@ -117,24 +123,20 @@ function StationPage() {
               <CrowdBars occupancy={crowd.occupancy} front={crowd.front} mid={crowd.mid} rear={crowd.rear} />
             </div>
             <p className="mt-3 text-sm leading-relaxed">{crowd.sentence}</p>
-            <p className="mt-2 text-xs text-muted">
-              {standHint(prev, st.code, lineId, dir, rakeId)}
-            </p>
-            <p className="mt-1 text-[11px] uppercase tracking-wider text-subtle">Likely load · not live CCTV</p>
+            <p className="mt-2 text-xs text-muted">{standHint(prev, st.code, lineId, dir, rakeId)}</p>
           </section>
         </div>
 
         <section className="mt-10">
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted">Next 12 trains</h2>
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted">Next trains</h2>
           <div className="overflow-x-auto rounded-lg border border-border">
-            <table className="w-full min-w-[640px] text-left text-sm">
+            <table className="w-full min-w-[520px] text-left text-sm">
               <thead className="bg-elevated text-xs uppercase tracking-wider text-muted">
                 <tr>
                   <th className="px-3 py-2 font-medium">Train</th>
                   <th className="px-3 py-2 font-medium">To</th>
                   <th className="px-3 py-2 font-medium">PF</th>
                   <th className="px-3 py-2 font-medium">ETA</th>
-                  <th className="px-3 py-2 font-medium">Rake</th>
                   <th className="px-3 py-2 font-medium">Load</th>
                 </tr>
               </thead>
@@ -148,34 +150,33 @@ function StationPage() {
                     origin: t.origin,
                     destination: t.destination,
                     arrivingAt: st.code,
-                    rakeTemplateId: t.rakeTemplateId,
+                    rakeTemplateId: rk.id,
                     leadingCab: t.leadingCab,
                   });
-                  const hot = Math.max(c.front, c.mid, c.rear);
                   return (
                     <tr key={t.trainNumber} className="border-t border-border">
-                      <td className="px-3 py-2 font-mono tabular">
+                      <td className="px-3 py-2.5 font-mono tabular">
                         <Link to="/train/$number" params={{ number: t.trainNumber }} className="hover:underline">
                           {t.trainNumber}
                         </Link>
+                        {t.isAC ? <span className="ml-2 text-xs text-ac">AC</span> : null}
                       </td>
-                      <td className="px-3 py-2">{dest?.name ?? t.destination}</td>
-                      <td className="px-3 py-2 font-mono">
+                      <td className="px-3 py-2.5">{dest?.name ?? t.destination}</td>
+                      <td className="px-3 py-2.5 font-mono">
                         {t.platformNext}
                         {t.platformChanged ? <span className="ml-1 text-delay">changed</span> : null}
                       </td>
-                      <td className="px-3 py-2 font-mono tabular">{t.eta ?? "—"}</td>
-                      <td className="px-3 py-2">
-                        <RakeMap rakeId={rk.id} leadingCab={t.leadingCab} compact />
+                      <td className="px-3 py-2.5 font-mono tabular">{t.eta ?? "—"}</td>
+                      <td className="px-3 py-2.5">
+                        <MiniHeat occupancy={t.direction === "UP" ? [...c.occupancy].reverse() : c.occupancy} />
                       </td>
-                      <td className="px-3 py-2 font-mono tabular text-xs">{Math.round(hot * 100)}%</td>
                     </tr>
                   );
                 })}
                 {!board.length ? (
                   <tr>
-                    <td colSpan={6} className="px-3 py-8 text-center text-muted">
-                      No trains due in the current window.
+                    <td colSpan={5} className="px-3 py-8 text-center text-muted">
+                      {snap ? "No trains due in this window." : "Loading board…"}
                     </td>
                   </tr>
                 ) : null}
@@ -183,7 +184,7 @@ function StationPage() {
             </table>
           </div>
           {g?.confidence === "inferred" ? (
-            <p className="mt-3 text-xs text-delay">This station uses an inferred 2-platform default. Treat PF numbers as a hint.</p>
+            <p className="mt-3 text-xs text-delay">Inferred 2-platform layout. Treat PF numbers as a hint.</p>
           ) : null}
         </section>
       </div>

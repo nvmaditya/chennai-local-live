@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
+import { ArrowLeft } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { LineStrip } from "@/components/line-strip";
 import { TrainList } from "@/components/network-map";
@@ -22,7 +23,10 @@ function LinePage() {
   return (
     <AppShell source={snap?.source}>
       <div className="mx-auto w-full max-w-6xl px-4 py-6">
-        <div className="mb-4 flex flex-wrap gap-2">
+        <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-fg">
+          <ArrowLeft className="size-4" /> Network
+        </Link>
+        <div className="mt-4 flex flex-wrap gap-2">
           {LINES.map((l) => (
             <Link
               key={l.id}

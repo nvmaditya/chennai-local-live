@@ -1,10 +1,8 @@
-import { Link } from "@tanstack/react-router";
 import { Minus, Plus, RotateCcw } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { LINES } from "@/data/lines";
-import { LINE_COLOUR, MAJOR, stationOf, stationsOn } from "@/lib/transit/catalog";
+import { LINE_COLOUR, stationOf, stationsOn } from "@/lib/transit/catalog";
 import type { LineId, LiveTrain, Station } from "@/lib/transit/types";
-import { cn } from "@/lib/utils";
 
 const OFFSET: Record<LineId, number> = { south: 0, west: -7, north: 7, mrts: 12 };
 
@@ -32,7 +30,7 @@ const LABELS: Record<string, { t: string; dx: number; dy: number; anchor?: "star
 
 type Cam = { x: number; y: number; k: number };
 
-export function NetworkMap({
+export const NetworkMap = memo(function NetworkMap({
   trains,
   activeLines,
   selected,
@@ -134,30 +132,19 @@ export function NetworkMap({
                   opacity={0.92}
                 />
                 {sts.map((s) => (
-                  <StationMark
-                    key={line.id + s.code}
-                    st={s}
-                    line={line.id}
-                    onSelect={(code) => {
-                      onSelectStation(code);
-                    }}
-                  />
+                  <StationMark key={line.id + s.code} st={s} line={line.id} onSelect={onSelectStation} />
                 ))}
               </g>
             );
           })}
-          {trains
-            .filter((t) => activeLines.includes(t.lineId))
-            .map((t) => (
-              <TrainMark
-                key={t.trainNumber}
-                train={t}
-                selected={selected === t.trainNumber}
-                onSelect={(train) => {
-                  onSelectTrain(train);
-                }}
-              />
-            ))}
+          {trains.map((t) => (
+            <TrainMark
+              key={t.trainNumber}
+              train={t}
+              selected={selected === t.trainNumber}
+              onSelect={onSelectTrain}
+            />
+          ))}
         </g>
       </svg>
       <div className="pointer-events-none absolute bottom-3 left-3 flex flex-wrap gap-2">
@@ -184,7 +171,9 @@ export function NetworkMap({
       </div>
     </div>
   );
-}
+});
+
+export default NetworkMap;
 
 function MapBtn({
   label,
@@ -218,7 +207,7 @@ function StationMark({
 }) {
   const y = st.sy + OFFSET[line];
   const label = LABELS[st.code];
-  const major = MAJOR.has(st.code);
+  const labeled = Boolean(label);
   return (
     <g
       data-hit="station"
@@ -234,7 +223,7 @@ function StationMark({
       <circle
         cx={st.sx}
         cy={y}
-        r={major ? 5 : 3}
+        r={labeled ? 5 : 3}
         fill="#07090d"
         stroke={LINE_COLOUR[line]}
         strokeWidth={1.6}
@@ -296,152 +285,4 @@ function TrainMark({
       {train.isAC ? <rect x={-4} y={-2} width={8} height={4} rx={1} fill="#07090d" opacity={0.45} /> : null}
     </g>
   );
-}
-
-function rankTrain(t: LiveTrain): number {
-  if (t.lastEvent === "AT_PLATFORM" || t.lastEvent === "ARRIVED") return 0;
-  if (t.lastEvent === "APPROACHING") return 1;
-  return 2;
-}
-
-export function TrainList({
-  trains,
-  onSelect,
-  selected,
-  grouped = true,
-}: {
-  trains: LiveTrain[];
-  onSelect: (t: LiveTrain) => void;
-  selected?: string | null;
-  grouped?: boolean;
-}) {
-  const [open, setOpen] = useState<Record<string, boolean>>({});
-  const groups = useMemo(() => {
-    const m = new Map<LineId, LiveTrain[]>();
-    for (const t of trains) {
-      const arr = m.get(t.lineId) ?? [];
-      arr.push(t);
-      m.set(t.lineId, arr);
-    }
-    for (const arr of m.values()) {
-      arr.sort(
-        (a, b) =>
-          rankTrain(a) - rankTrain(b) || (a.eta ?? "99").localeCompare(b.eta ?? "99") || a.trainNumber.localeCompare(b.trainNumber),
-      );
-    }
-    return LINES.filter((l) => m.has(l.id)).map((l) => ({ line: l, trains: m.get(l.id)! }));
-  }, [trains]);
-
-  if (!trains.length) {
-    return <p className="px-4 py-8 text-sm text-muted">No trains on the selected lines in this window.</p>;
-  }
-
-  if (!grouped) {
-    return (
-      <ul className="divide-y divide-border">
-        {trains.map((t) => (
-          <TrainRow key={t.trainNumber} t={t} selected={selected === t.trainNumber} onSelect={onSelect} />
-        ))}
-      </ul>
-    );
-  }
-
-  return (
-    <div>
-      {groups.map(({ line, trains: list }) => {
-        const expanded = open[line.id] ?? false;
-        const shown = expanded ? list : list.slice(0, 5);
-        return (
-          <section key={line.id}>
-            <div className="sticky top-0 z-10 flex items-center gap-2 border-b border-border bg-surface px-4 py-2">
-              <span className="h-2 w-2 rounded-full" style={{ background: line.colour }} />
-              <h3 className="text-xs font-semibold uppercase tracking-wider">{line.name}</h3>
-              <span className="ml-auto font-mono text-xs tabular text-muted">{list.length}</span>
-            </div>
-            <ul className="divide-y divide-border">
-              {shown.map((t) => (
-                <TrainRow key={t.trainNumber} t={t} selected={selected === t.trainNumber} onSelect={onSelect} />
-              ))}
-            </ul>
-            {list.length > 5 ? (
-              <button
-                type="button"
-                className="w-full px-4 py-2 text-left text-xs text-muted hover:text-fg"
-                onClick={() => setOpen((s) => ({ ...s, [line.id]: !expanded }))}
-              >
-                {expanded ? "Show fewer" : `${list.length - 5} more on ${line.name}`}
-              </button>
-            ) : null}
-          </section>
-        );
-      })}
-    </div>
-  );
-}
-
-function TrainRow({
-  t,
-  selected,
-  onSelect,
-}: {
-  t: LiveTrain;
-  selected: boolean;
-  onSelect: (t: LiveTrain) => void;
-}) {
-  const dest = stationOf(t.destination);
-  const last = stationOf(t.lastReportedStation);
-  const next = t.nextStation ? stationOf(t.nextStation) : undefined;
-  return (
-    <li className="flex items-stretch">
-      <button
-        type="button"
-        onClick={() => onSelect(t)}
-        className={cn(
-          "flex min-w-0 flex-1 items-start gap-3 px-4 py-3 text-left transition-colors duration-150 hover:bg-elevated",
-          selected && "bg-elevated",
-        )}
-      >
-        <span
-          className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full"
-          style={{ background: LINE_COLOUR[t.lineId] }}
-          aria-hidden
-        />
-        <span className="min-w-0 flex-1">
-          <span className="flex items-center gap-2">
-            <span className="font-mono text-sm tabular">{t.trainNumber}</span>
-            <span className="truncate text-sm">{dest?.name ?? t.destination}</span>
-            {t.isAC ? <span className="text-xs uppercase tracking-wider text-ac">AC</span> : null}
-          </span>
-          <span className="mt-0.5 block truncate text-xs text-muted">
-            {eventLabel(t.lastEvent)} {last?.name ?? t.lastReportedStation}
-            {next ? ` → ${next.name}` : ""} · PF {t.platformNext}
-            {t.delayMinutes ? ` · +${t.delayMinutes}m` : ""}
-            {t.eta ? ` · ${t.eta}` : ""}
-          </span>
-        </span>
-      </button>
-      <Link
-        to="/train/$number"
-        params={{ number: t.trainNumber }}
-        className="grid shrink-0 place-items-center px-3 text-xs text-muted hover:text-fg"
-      >
-        Run
-      </Link>
-    </li>
-  );
-}
-
-function eventLabel(e: LiveTrain["lastEvent"]): string {
-  switch (e) {
-    case "AT_PLATFORM":
-      return "at";
-    case "APPROACHING":
-      return "to";
-    case "ARRIVED":
-      return "at";
-    case "DEPARTED":
-      return "left";
-    case "TERMINATED":
-      return "ended";
-  }
 }

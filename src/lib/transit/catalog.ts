@@ -1,7 +1,5 @@
 import { LINES, LINE_BY_ID } from "../../data/lines.ts";
-import { rakeOf, RAKE_TEMPLATES } from "../../data/rakes.ts";
 import { STATION_BY_CODE, STATIONS, stationOf, stationsOn } from "../../data/stations.ts";
-import { defaultPlatform, geometryFor } from "./geometry.ts";
 import type { Direction, LineId, Station } from "./types.ts";
 
 export {
@@ -9,12 +7,8 @@ export {
   LINE_BY_ID,
   STATIONS,
   STATION_BY_CODE,
-  RAKE_TEMPLATES,
-  rakeOf,
   stationOf,
   stationsOn,
-  geometryFor,
-  defaultPlatform,
 };
 
 export const LINE_COLOUR: Record<LineId, string> = {

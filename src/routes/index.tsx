@@ -1,14 +1,16 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Search } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { AppShell } from "@/components/app-shell";
-import { NetworkMap, TrainList } from "@/components/network-map";
-import { TrainPanel } from "@/components/train-panel";
+import { TrainList } from "@/components/train-list";
 import { LINES } from "@/data/lines";
 import { searchStations } from "@/lib/transit/catalog";
 import { useLiveNetwork } from "@/lib/transit/use-live";
 import type { LineId, LiveTrain } from "@/lib/transit/types";
 import { cn } from "@/lib/utils";
+
+const NetworkMap = lazy(() => import("@/components/network-map"));
+const TrainPanel = lazy(() => import("@/components/train-panel"));
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -22,16 +24,25 @@ function Home() {
   useEffect(() => setSearchReady(true), []);
   const hits = useMemo(() => searchStations(q, 8), [q]);
 
-  const trains = (snap?.trains ?? []).filter((t) => active.includes(t.lineId));
+  const trains = useMemo(
+    () => (snap?.trains ?? []).filter((t) => active.includes(t.lineId)),
+    [snap?.trains, active],
+  );
   const selectedLive = trains.find((t) => t.trainNumber === selected?.trainNumber) ?? selected;
 
-  function toggle(id: LineId) {
+  const toggle = useCallback((id: LineId) => {
     setActive((cur) => {
       if (cur.includes(id) && cur.length > 1) return cur.filter((x) => x !== id);
       if (!cur.includes(id)) return [...cur, id];
       return cur;
     });
-  }
+  }, []);
+
+  const onSelectTrain = useCallback((t: LiveTrain) => setSelected(t), []);
+  const onSelectStation = useCallback(
+    (code: string) => nav({ to: "/station/$code", params: { code } }),
+    [nav],
+  );
 
   return (
     <AppShell source={snap?.source}>
@@ -107,16 +118,20 @@ function Home() {
             </div>
           </div>
           <div className="relative min-h-80 flex-1 bg-panel md:min-h-0">
-            <NetworkMap
-              trains={trains}
-              activeLines={active}
-              selected={selectedLive?.trainNumber}
-              onSelectTrain={(t) => setSelected(t)}
-              onSelectStation={(code) => nav({ to: "/station/$code", params: { code } })}
-            />
+            <Suspense fallback={<div className="absolute inset-0 bg-panel" />}>
+              <NetworkMap
+                trains={trains}
+                activeLines={active}
+                selected={selectedLive?.trainNumber}
+                onSelectTrain={onSelectTrain}
+                onSelectStation={onSelectStation}
+              />
+            </Suspense>
             {selectedLive ? (
               <div className="absolute inset-x-0 bottom-0 z-20 max-h-[min(72dvh,560px)] overflow-hidden rounded-t-xl border-t border-border bg-surface shadow-panel md:inset-x-auto md:bottom-4 md:left-4 md:w-[380px] md:rounded-xl md:border">
-                <TrainPanel train={selectedLive} onClose={() => setSelected(null)} />
+                <Suspense fallback={<div className="h-40 bg-surface" />}>
+                  <TrainPanel train={selectedLive} onClose={() => setSelected(null)} />
+                </Suspense>
               </div>
             ) : (
               <p className="pointer-events-none absolute left-3 top-3 hidden rounded-md bg-bg/70 px-2 py-1 text-xs text-muted md:block">
@@ -131,7 +146,7 @@ function Home() {
           </div>
           <div className="min-h-0 flex-1 overflow-y-auto">
             {snap ? (
-              <TrainList trains={trains} onSelect={setSelected} selected={selectedLive?.trainNumber} />
+              <TrainList trains={trains} onSelect={onSelectTrain} selected={selectedLive?.trainNumber} />
             ) : (
               <p className="px-4 py-8 text-sm text-muted">Building the board…</p>
             )}

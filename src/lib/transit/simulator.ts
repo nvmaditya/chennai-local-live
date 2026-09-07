@@ -1,13 +1,8 @@
 import { CORRIDORS, REAL_NUMBERS, directionOf, reverseCorridor, type Corridor } from "../../data/corridors.ts";
 import { rakeOf } from "../../data/rakes.ts";
-import { LINE_BY_ID } from "../../data/lines.ts";
-import {
-  defaultPlatform,
-  interpolateGeo,
-  kmAlong,
-  pathCodes,
-  stationOf,
-} from "./catalog.ts";
+import { interpolateGeo, kmAlong, pathCodes, stationOf } from "./catalog.ts";
+import { defaultPlatform } from "./geometry.ts";
+import { boardFromSnap } from "./board.ts";
 import { leadingFor } from "./crowd.ts";
 import { clockLabel, formatHm, hash01, isPeak, minutesOfDay, timeBand } from "./time.ts";
 import type { Direction, LiveTrain, NetworkSnapshot, SeedService, SeedStop, TrainEvent } from "./types.ts";
@@ -199,39 +194,7 @@ export function simulateTrain(num: string, nowMs: number = Date.now()): LiveTrai
 }
 
 export function stationBoard(code: string, nowMs: number = Date.now(), take = 12): LiveTrain[] {
-  const snap = simulateNetwork(nowMs);
-  const st = stationOf(code);
-  if (!st) return [];
-  const hits = snap.trains.filter((t) => {
-    if (t.nextStation === code) return true;
-    if (t.lastReportedStation === code && (t.lastEvent === "AT_PLATFORM" || t.lastEvent === "ARRIVED")) return true;
-    const line = LINE_BY_ID[t.lineId];
-    return line.stations.includes(code) && t.origin !== t.destination;
-  });
-  const ranked = hits
-    .map((t) => {
-      const codes = LINE_BY_ID[t.lineId].stations;
-      const iHere = codes.indexOf(code);
-      const iLast = codes.indexOf(t.lastReportedStation);
-      const iNext = t.nextStation ? codes.indexOf(t.nextStation) : -1;
-      const toward =
-        t.direction === "DOWN" ? iHere >= iLast : iHere <= iLast;
-      const dist = Math.abs(iHere - iLast);
-      return { t, dist, toward, approaching: iNext === iHere };
-    })
-    .filter((x) => x.toward || x.approaching)
-    .sort((a, b) => Number(b.approaching) - Number(a.approaching) || a.dist - b.dist)
-    .map((x) => x.t);
-
-  const uniq: LiveTrain[] = [];
-  const seen = new Set<string>();
-  for (const t of ranked) {
-    if (seen.has(t.trainNumber)) continue;
-    seen.add(t.trainNumber);
-    uniq.push(t);
-    if (uniq.length >= take) break;
-  }
-  return uniq;
+  return boardFromSnap(simulateNetwork(nowMs), code, take);
 }
 
 export function buildSeedTimetable(): SeedService[] {
@@ -270,17 +233,4 @@ export function buildSeedTimetable(): SeedService[] {
   return services;
 }
 
-export function trainTimeline(train: LiveTrain): { code: string; name: string; eta: string | null; pf: string; current: boolean }[] {
-  const codes = pathCodes(train.origin, train.destination, train.lineId);
-  const iLast = codes.indexOf(train.lastReportedStation);
-  return codes.map((code, i) => {
-    const st = stationOf(code);
-    return {
-      code,
-      name: st?.name ?? code,
-      eta: i === iLast + 1 ? train.eta : null,
-      pf: defaultPlatform(code, train.direction),
-      current: code === train.lastReportedStation || code === train.nextStation,
-    };
-  });
-}
+export { trainTimeline } from "./board.ts";

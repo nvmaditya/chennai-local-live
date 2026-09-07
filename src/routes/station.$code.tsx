@@ -1,18 +1,19 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { AppShell } from "@/components/app-shell";
-import { PlatformDiagram } from "@/components/platform-diagram";
 import { CrowdBars, MiniHeat, RakeMap } from "@/components/rake-map";
 import { LINE_BY_ID } from "@/data/lines";
 import { rakeOf } from "@/data/rakes";
 import { LINE_COLOUR, prevStations, stationOf } from "@/lib/transit/catalog";
 import { crowdAtStation, leadingFor, standHint } from "@/lib/transit/crowd";
 import { geometryFor } from "@/lib/transit/geometry";
-import { stationBoard } from "@/lib/transit/simulator";
+import { boardFromSnap } from "@/lib/transit/board";
 import { useLiveNetwork } from "@/lib/transit/use-live";
 import type { Direction } from "@/lib/transit/types";
 import { cn } from "@/lib/utils";
+
+const PlatformDiagram = lazy(() => import("@/components/platform-diagram"));
 
 export const Route = createFileRoute("/station/$code")({ component: StationPage });
 
@@ -21,7 +22,7 @@ function StationPage() {
   const st = stationOf(code.toUpperCase());
   if (!st) throw notFound();
   const { snap } = useLiveNetwork();
-  const board = snap ? stationBoard(st.code, snap.generatedAt, 12) : [];
+  const board = snap ? boardFromSnap(snap, st.code, 12) : [];
   const g = geometryFor(st.code);
   const lineId = st.lines[0];
   const line = LINE_BY_ID[lineId];
@@ -82,7 +83,9 @@ function StationPage() {
         <div className="mt-8 grid gap-8 lg:grid-cols-2">
           <section className="order-2 lg:order-1">
             <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted">Platforms</h2>
-            <PlatformDiagram code={st.code} train={board[0]} highlightCars={crowd.ladiesCars} />
+            <Suspense fallback={<div className="h-40 rounded-md bg-elevated" />}>
+              <PlatformDiagram code={st.code} train={board[0]} highlightCars={crowd.ladiesCars} />
+            </Suspense>
           </section>
           <section className="order-1 lg:order-2">
             <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted">Where to stand</h2>

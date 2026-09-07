@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-ro
 import { ArrowLeft } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { LineStrip } from "@/components/line-strip";
-import { TrainList } from "@/components/network-map";
+import { TrainList } from "@/components/train-list";
 import { LINES, LINE_BY_ID } from "@/data/lines";
 import { stationsOn } from "@/lib/transit/catalog";
 import { useLiveNetwork } from "@/lib/transit/use-live";

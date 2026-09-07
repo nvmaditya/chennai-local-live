@@ -138,3 +138,5 @@ function PlatformRow({
     </div>
   );
 }
+
+export default PlatformDiagram;

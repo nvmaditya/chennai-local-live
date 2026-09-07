@@ -5,9 +5,8 @@ import { AppShell } from "@/components/app-shell";
 import { CrowdBars, RakeMap } from "@/components/rake-map";
 import { LINE_COLOUR, pathCodes, prevStations, stationOf } from "@/lib/transit/catalog";
 import { crowdForTrain } from "@/lib/transit/crowd";
-import { defaultPlatform } from "@/lib/transit/geometry";
-import { geometryFor } from "@/lib/transit/geometry";
-import { simulateTrain, trainTimeline } from "@/lib/transit/simulator";
+import { defaultPlatform, geometryFor } from "@/lib/transit/geometry";
+import { trainTimeline } from "@/lib/transit/board";
 import { useLiveNetwork } from "@/lib/transit/use-live";
 import type { LiveTrain } from "@/lib/transit/types";
 
@@ -32,7 +31,7 @@ function TrainPage() {
         if (j?.trainNumber) setTrain(j as LiveTrain);
       })
       .catch(() => {
-        setTrain(simulateTrain(number) ?? null);
+        setTrain(null);
       });
   }, [number, snap]);
 

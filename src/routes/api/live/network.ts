@@ -7,7 +7,7 @@ export const Route = createFileRoute("/api/live/network")({
       GET: async () => {
         const snap = await getNetworkSnapshot();
         return Response.json(snap, {
-          headers: { "Cache-Control": "public, max-age=15" },
+          headers: { "Cache-Control": "public, max-age=10, stale-while-revalidate=20" },
         });
       },
     },

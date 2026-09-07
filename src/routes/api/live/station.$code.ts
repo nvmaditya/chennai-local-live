@@ -8,7 +8,7 @@ export const Route = createFileRoute("/api/live/station/$code")({
         const data = await getStationLive(params.code.toUpperCase());
         if (!data) return new Response("Unknown station", { status: 404 });
         return Response.json(data, {
-          headers: { "Cache-Control": "public, max-age=15" },
+          headers: { "Cache-Control": "public, max-age=10, stale-while-revalidate=20" },
         });
       },
     },

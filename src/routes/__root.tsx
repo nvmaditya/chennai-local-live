@@ -1,9 +1,12 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "Chennai Local Live";
+const FONT_HREF =
+  "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&family=Noto+Sans+Tamil:wght@400&display=swap";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -25,10 +28,6 @@ export const Route = createRootRoute({
       { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+Tamil:wght@400;500;600&display=swap",
-      },
     ],
   }),
   component: () => (
@@ -37,6 +36,7 @@ export const Route = createRootRoute({
         <HeadContent />
       </head>
       <body className="bg-bg text-fg">
+        <FontLoader />
         <PreviewHostBridge />
         <AuthProvider>
           <Outlet />
@@ -46,3 +46,15 @@ export const Route = createRootRoute({
     </html>
   ),
 });
+
+function FontLoader() {
+  useEffect(() => {
+    if (document.getElementById("plex-fonts")) return;
+    const link = document.createElement("link");
+    link.id = "plex-fonts";
+    link.rel = "stylesheet";
+    link.href = FONT_HREF;
+    document.head.appendChild(link);
+  }, []);
+  return null;
+}

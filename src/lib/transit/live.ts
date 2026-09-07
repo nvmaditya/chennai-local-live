@@ -1,6 +1,7 @@
 import { stationOf } from "../../data/stations.ts";
 import { rakeOf } from "../../data/rakes.ts";
-import { simulateNetwork, simulateTrain, stationBoard } from "./simulator.ts";
+import { simulateNetwork, simulateTrain } from "./simulator.ts";
+import { boardFromSnap } from "./board.ts";
 import type { DataSource, LiveTrain, NetworkSnapshot } from "./types.ts";
 
 const CACHE_MS = 25_000;
@@ -70,13 +71,9 @@ export async function getNetworkSnapshot(nowMs: number = Date.now()): Promise<Ne
 }
 
 export async function getTrainLive(num: string, nowMs: number = Date.now()): Promise<LiveTrain | null> {
-  const sim = simulateTrain(num, nowMs) ?? null;
-  if (!sim) {
-    const snap = simulateNetwork(nowMs);
-    const hit = snap.trains.find((t) => t.trainNumber === num);
-    if (hit) return hit;
-    return buildGhost(num);
-  }
+  const snap = await getNetworkSnapshot(nowMs);
+  const sim = snap.trains.find((t) => t.trainNumber === num) ?? simulateTrain(num, nowMs) ?? null;
+  if (!sim) return buildGhost(num);
   const live = await fetchNtesTrain(num);
   if (live) {
     return {
@@ -92,8 +89,9 @@ export async function getTrainLive(num: string, nowMs: number = Date.now()): Pro
 export async function getStationLive(code: string, nowMs: number = Date.now()) {
   const st = stationOf(code);
   if (!st) return null;
-  const trains = stationBoard(code, nowMs, 12);
-  return { station: st, trains, generatedAt: nowMs };
+  const snap = await getNetworkSnapshot(nowMs);
+  const trains = boardFromSnap(snap, code, 12);
+  return { station: st, trains, generatedAt: snap.generatedAt };
 }
 
 function buildGhost(num: string): LiveTrain | null {

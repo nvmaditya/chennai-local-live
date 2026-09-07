@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { X } from "lucide-react";
+import { memo } from "react";
 import { rakeOf } from "@/data/rakes";
 import { stationOf } from "@/data/stations";
 import { crowdForTrain } from "@/lib/transit/crowd";
@@ -8,7 +9,7 @@ import { LINE_COLOUR, prevStations } from "@/lib/transit/catalog";
 import type { LiveTrain } from "@/lib/transit/types";
 import { CrowdBars, RakeMap } from "./rake-map";
 
-export function TrainPanel({ train, onClose }: { train: LiveTrain; onClose: () => void }) {
+export const TrainPanel = memo(function TrainPanel({ train, onClose }: { train: LiveTrain; onClose: () => void }) {
   const dest = stationOf(train.destination);
   const origin = stationOf(train.origin);
   const next = train.nextStation ? stationOf(train.nextStation) : undefined;
@@ -78,7 +79,9 @@ export function TrainPanel({ train, onClose }: { train: LiveTrain; onClose: () =
       </div>
     </aside>
   );
-}
+});
+
+export default TrainPanel;
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
